@@ -1,40 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
 
-body, html, #root {
+body,
+html,
+#root {
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #000c18; /* Initial Winter Dark Blue */
+  background-color: #050510;
+  font-family: 'Inter', sans-serif;
 }
 
 .canvas-container {
+  position: relative;
   width: 100vw;
   height: 100vh;
 }
 
-.ui-layer {
+/* ─── Cinematic Overlay ─── */
+.ui-overlay {
   position: absolute;
-  top: 20px;
-  left: 20px;
+  bottom: 40px;
+  left: 50%;
+  transform: translateX(-50%);
   z-index: 10;
-  color: white;
-  font-family: sans-serif;
+  pointer-events: none;
+  text-align: center;
 }
 
-button {
-  padding: 10px 20px;
-  cursor: pointer;
-  background: rgba(255, 255, 255, 0.1);
-  border: 1px solid white;
-  color: white;
-  border-radius: 4px;
-  transition: background 0.3s;
+.season-label {
+  font-size: 0.75rem;
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.35);
+  user-select: none;
 }
 
-button:hover {
-  background: rgba(255, 255, 255, 0.2);
+/* ─── Optional subtle vignette ─── */
+.canvas-container::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background: radial-gradient(ellipse at center,
+      transparent 50%,
+      rgba(0, 0, 0, 0.5) 100%);
+  z-index: 5;
 }
