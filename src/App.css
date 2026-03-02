@@ -1,9 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500&display=swap');
+
+:root {
+  --mf-navy: #2d628c;
+  --mf-navy-dark: #1a3c57;
+  --mf-light: #f4f6f8;
+  --mf-white: #ffffff;
+  --mf-charcoal: #050510;
+}
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  /* Hide default cursor for Mont-fort cinematic feel */
+  cursor: none !important;
 }
 
 body,
@@ -12,8 +22,9 @@ html,
   width: 100%;
   height: 100%;
   overflow: hidden;
-  background-color: #050510;
-  font-family: 'Inter', sans-serif;
+  background-color: var(--mf-charcoal);
+  font-family: 'Montserrat', sans-serif;
+  color: var(--mf-white);
 }
 
 .canvas-container {
@@ -22,37 +33,106 @@ html,
   height: 100vh;
 }
 
-/* ─── Cinematic Overlay ─── */
+/* ─── Mont-fort Style UI Overlay ─── */
+
 .ui-overlay {
-  position: absolute;
-  bottom: 40px;
-  left: 50%;
-  transform: translateX(-50%);
-  z-index: 10;
-  pointer-events: none;
-  text-align: center;
-}
-
-.season-label {
-  font-size: 0.75rem;
-  font-weight: 300;
-  letter-spacing: 0.4em;
-  text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.35);
-  user-select: none;
-}
-
-/* ─── Optional subtle vignette ─── */
-.canvas-container::after {
-  content: '';
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   pointer-events: none;
-  background: radial-gradient(ellipse at center,
-      transparent 50%,
-      rgba(0, 0, 0, 0.5) 100%);
-  z-index: 5;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 40px;
+}
+
+.nav-frame {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  pointer-events: auto;
+  /* allow clicks if buttons added later */
+}
+
+.logo {
+  font-weight: 400;
+  font-size: 1.25rem;
+  letter-spacing: 0.5em;
+  text-transform: uppercase;
+}
+
+.season-indicator {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+.season-label {
+  font-weight: 300;
+  font-size: 0.8rem;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.season-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background-color: var(--mf-navy);
+  box-shadow: 0 0 8px var(--mf-navy);
+}
+
+.bottom-frame {
+  display: flex;
+  align-items: flex-end;
+  justify-content: flex-start;
+}
+
+.scroll-prompt {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.scroll-text {
+  font-size: 0.65rem;
+  font-weight: 300;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.scroll-line {
+  width: 1px;
+  height: 40px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* ─── Custom Cursor ─── */
+.custom-cursor {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 40px;
+  height: 40px;
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  border-radius: 50%;
+  pointer-events: none;
+  z-index: 9999;
+  transform: translate(-50%, -50%);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.custom-cursor-dot {
+  width: 4px;
+  height: 4px;
+  background-color: white;
+  border-radius: 50%;
 }
